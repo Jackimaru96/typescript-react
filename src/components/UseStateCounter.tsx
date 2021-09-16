@@ -7,12 +7,7 @@ import {
   makeStyles,
   Theme,
   Paper,
-  ThemeProvider,
-  createTheme,
 } from "@material-ui/core";
-
-import UseStateObject from "./UseStateObject";
-import UseStateArray from "./UseStateArray";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,17 +29,6 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#5F1A37",
-    },
-    secondary: {
-      main: "#776885",
-    },
-  },
-});
-
 const UseStateCounter = () => {
   const classes = useStyles();
   const [count, setCount] = useState(0);
@@ -64,35 +48,33 @@ const UseStateCounter = () => {
             This uses the useState Hook to control the `count` state{" "}
           </Typography>
           <Typography> The count now is {count} </Typography>
-          <ThemeProvider theme={theme}>
-            <Grid item xs={12}>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setCount(count + 1)}
-              >
-                {" "}
-                Increment 1{" "}
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => setCount(count - 1)}
-              >
-                {" "}
-                Decrement 1{" "}
-              </Button>
-              <Button
-                variant="contained"
-                color="default"
-                style={{ backgroundColor: "#8DB580", color: "white" }}
-                onClick={() => setCount(0)}
-              >
-                {" "}
-                Reset{" "}
-              </Button>
-            </Grid>
-          </ThemeProvider>
+          <Grid item xs={12}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => setCount(count + 1)}
+            >
+              {" "}
+              Increment 1{" "}
+            </Button>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => setCount(count - 1)}
+            >
+              {" "}
+              Decrement 1{" "}
+            </Button>
+            <Button
+              variant="contained"
+              color="default"
+              style={{ backgroundColor: "#8DB580", color: "white" }}
+              onClick={() => setCount(0)}
+            >
+              {" "}
+              Reset{" "}
+            </Button>
+          </Grid>
         </Paper>
       </Grid>
     </>
