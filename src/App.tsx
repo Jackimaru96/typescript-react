@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import UseReducerCounter from "./components/UseReducerCounter";
-import UseStateCounter from "./components/UseStateCounter";
+import UseState from "./components/UseState";
 import { Box } from "./context/Box";
 import { ThemeContextProvider } from "./context/ThemeContext";
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <div>
-        <UseStateCounter />
+        <UseState />
       </div>
       <div>
         <UseReducerCounter />

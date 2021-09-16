@@ -11,12 +11,16 @@ import {
   createTheme,
 } from "@material-ui/core";
 
+import UseStateObject from "./UseStateObject";
+import UseStateArray from "./UseStateArray";
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
     },
     paper: {
+      margin: theme.spacing(2),
       padding: theme.spacing(2),
       textAlign: "center",
     },
@@ -44,81 +48,54 @@ const theme = createTheme({
 const UseStateCounter = () => {
   const classes = useStyles();
   const [count, setCount] = useState(0);
-  const [name, setName] = useState({ firstName: "", lastName: "" });
 
   return (
-    <div>
-      <Grid className={classes.grid} container spacing={3} xs={12}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            {<h1>useState</h1>}
-            <Typography>
+    <>
+      <Grid item xs={12}>
+        <Paper className={classes.paper}>
+          {
+            <h2 className={classes.marginTop}>
               {" "}
-              This uses the useState Hook to control the `count` state{" "}
-            </Typography>
-            <Typography> The count now is {count} </Typography>
-            <ThemeProvider theme={theme}>
-              <Grid item xs={12}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => setCount(count + 1)}
-                >
-                  {" "}
-                  Increment 1{" "}
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  onClick={() => setCount(count - 1)}
-                >
-                  {" "}
-                  Decrement 1{" "}
-                </Button>
-                <Button
-                  variant="contained"
-                  color="default"
-                  style={{ backgroundColor: "#8DB580", color: "white" }}
-                  onClick={() => setCount(0)}
-                >
-                  {" "}
-                  Reset{" "}
-                </Button>
-              </Grid>
-            </ThemeProvider>
-            <Grid className={classes.marginTop} item xs={12}>
-              <Typography>The following is useState with object</Typography>
-            </Grid>
+              useState with previousState and numbers{" "}
+            </h2>
+          }
+          <Typography>
+            {" "}
+            This uses the useState Hook to control the `count` state{" "}
+          </Typography>
+          <Typography> The count now is {count} </Typography>
+          <ThemeProvider theme={theme}>
             <Grid item xs={12}>
-              <form>
-                <input
-                  type="text"
-                  value={name.firstName}
-                  onChange={(e) =>
-                    setName({
-                      firstName: e.target.value,
-                      lastName: name.lastName,
-                    })
-                  }
-                />
-                <input
-                  type="text"
-                  value={name.lastName}
-                  onChange={(e) =>
-                    setName({
-                      firstName: name.firstName,
-                      lastName: e.target.value,
-                    })
-                  }
-                />
-                <h2>Your first name is - {name.firstName}</h2>
-                <h2>Your last name is - {name.lastName}</h2>
-              </form>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => setCount(count + 1)}
+              >
+                {" "}
+                Increment 1{" "}
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => setCount(count - 1)}
+              >
+                {" "}
+                Decrement 1{" "}
+              </Button>
+              <Button
+                variant="contained"
+                color="default"
+                style={{ backgroundColor: "#8DB580", color: "white" }}
+                onClick={() => setCount(0)}
+              >
+                {" "}
+                Reset{" "}
+              </Button>
             </Grid>
-          </Paper>
-        </Grid>
+          </ThemeProvider>
+        </Paper>
       </Grid>
-    </div>
+    </>
   );
 };
 
